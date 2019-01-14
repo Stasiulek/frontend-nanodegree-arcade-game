@@ -34,12 +34,24 @@ class PlayerOne  {
     render () {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+
+    handleInput(keyup) {
+        if (keyup == 'left') {
+            this.x -= 101;
+        } else if (keyup == 'right') {
+            this.x += 101;
+        } else if (keyup == 'up') {
+            this.y -= 83;
+        } else if (keyup == 'down') {
+            this.y += 83;
+        }
+    }
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const player = new PlayerOne();
-// Place the player object in a variable called player
+// Place the player object in a variable called player @@ DONE @@
 
 
 
@@ -53,5 +65,7 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    // player.handleInput(allowedKeys[e.keyCode]);
+    // console.log(allowedKeys);
+
+    player.handleInput(allowedKeys[e.keyCode]);
 });
