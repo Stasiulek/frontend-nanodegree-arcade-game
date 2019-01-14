@@ -36,13 +36,13 @@ class PlayerOne  {
     }
 
     handleInput(keyup) {
-        if (keyup == 'left') {
+        if (keyup == 'left' && this.x > 0) {
             this.x -= 101;
-        } else if (keyup == 'right') {
+        } else if (keyup == 'right' && this.x < 400) {
             this.x += 101;
-        } else if (keyup == 'up') {
+        } else if (keyup == 'up' && this.y > 0) {
             this.y -= 83;
-        } else if (keyup == 'down') {
+        } else if (keyup == 'down' && this.y < 332) {
             this.y += 83;
         }
     }
@@ -65,7 +65,6 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    // console.log(allowedKeys);
-
     player.handleInput(allowedKeys[e.keyCode]);
+
 });
