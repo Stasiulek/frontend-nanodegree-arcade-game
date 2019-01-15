@@ -5,6 +5,8 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    // this.x = 0;
+    // this.y = 0;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -29,6 +31,14 @@ class PlayerOne  {
         this.x = 200;
         this.y = 400;
         this.sprite = 'images/char-boy.png';
+        this.win = false;
+    }
+
+    update() {
+        if(this.y === 68) {
+            this.win = true;
+            console.log('win');
+        }
     }
 
     render () {
@@ -46,10 +56,18 @@ class PlayerOne  {
             this.y += 83;
         }
     }
+
+    //send back to start
+    reset () {
+        this.x = 200;
+        this.y = 400;
+    }
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
+const enemy = new Enemy();
+
 const player = new PlayerOne();
 // Place the player object in a variable called player @@ DONE @@
 
