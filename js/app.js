@@ -1,12 +1,12 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    // this.x = 0;
-    // this.y = 0;
+    this.x = x;
+    this.y = x;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -31,15 +31,13 @@ class PlayerOne  {
         this.x = 200;
         this.y = 400;
         this.sprite = 'images/char-boy.png';
-        this.win = false;
     }
 
-    update() {
-        if(this.y === 68) {
-            this.win = true;
-            console.log('win');
-        }
-    }
+    // update() {
+    //     if(this.y === 68) {
+    //         reset();
+    //     }
+    // }
 
     render () {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -66,7 +64,10 @@ class PlayerOne  {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const enemy = new Enemy();
+const enemy1 = new Enemy(0, 0);
+
+const allEnemies = [];
+allEnemies.push(enemy1);
 
 const player = new PlayerOne();
 // Place the player object in a variable called player @@ DONE @@
