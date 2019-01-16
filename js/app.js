@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -7,6 +7,7 @@ var Enemy = function(x, y) {
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -17,7 +18,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if (this.x < 503){
-        this.x += 101 * dt;
+        this.x += this.speed * dt;
     } else {
         this.x = -101;
     }
@@ -43,10 +44,21 @@ class PlayerOne  {
         if(this.y === -15) {
             // reset(); // !!! reset not scoped
             this.x = 200;
-            this.y = 400;
-            alert('win');
+                this.y = 400;
+
+                //TODO allow player to stand in water before being sent to start
+            // setTimeout(function () {
+            //     // reset ()
+            //     console.log('win')
+            //     this.x = 200;
+            //     this.y = 400;
+             
+            // }, 600);
         }
     }
+
+
+    
 
     render () {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -73,9 +85,9 @@ class PlayerOne  {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const enemy1 = new Enemy(0, 63);
-const enemy2 = new Enemy(0, 146);
-const enemy3 = new Enemy(0, 229);
+const enemy1 = new Enemy(0, 63, 100);
+const enemy2 = new Enemy(0, 146, 200);
+const enemy3 = new Enemy(0, 229, 300);
 const allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
 
