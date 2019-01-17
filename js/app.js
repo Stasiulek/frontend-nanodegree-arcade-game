@@ -43,17 +43,17 @@ class PlayerOne  {
     update() {
         if(this.y === -15) {
             // reset(); // !!! reset not scoped
-            this.x = 200;
-                this.y = 400;
+            // this.x = 200;
+            //     this.y = 400;
 
                 //TODO allow player to stand in water before being sent to start
-            // setTimeout(function () {
-            //     // reset ()
-            //     console.log('win')
-            //     this.x = 200;
-            //     this.y = 400;
+            setTimeout(function () {
+                // reset ()
+                // console.log('win')
+                player.x = 200;
+                player.y = 400;
              
-            // }, 600);
+            }, 600);
         }
     }
 
