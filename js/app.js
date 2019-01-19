@@ -22,8 +22,17 @@ Enemy.prototype.update = function(dt) {
     } else {
         this.x = -101;
     }
-    
-};
+    //collision detection
+    if (this.x < player.x + 70 && 
+        this.x + 70 > player.x &&
+        this.y < player.y + 70 &&
+        70 + this.y > player.y) {
+            //collision, reset player
+            player.x = 200;
+            player.y = 400;
+        } 
+}
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -39,17 +48,11 @@ class PlayerOne  {
         this.y = 400;
         this.sprite = 'images/char-boy.png';
     }
-    //check for collision or win
-    update() {
+    
+    update() {        
+        //check for win
         if(this.y === -15) {
-            // reset(); // !!! reset not scoped
-            // this.x = 200;
-            //     this.y = 400;
-
-                //TODO allow player to stand in water before being sent to start
             setTimeout(function () {
-                // reset ()
-                // console.log('win')
                 player.x = 200;
                 player.y = 400;
              
@@ -85,9 +88,9 @@ class PlayerOne  {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const enemy1 = new Enemy(0, 63, 100);
-const enemy2 = new Enemy(0, 146, 200);
-const enemy3 = new Enemy(0, 229, 300);
+const enemy1 = new Enemy(0, 68, 100);
+const enemy2 = new Enemy(0, 151, 200);
+const enemy3 = new Enemy(0, 234, 300);
 const allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
 
