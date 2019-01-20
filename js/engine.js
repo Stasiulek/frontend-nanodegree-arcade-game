@@ -23,10 +23,22 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
+        id = '';
 
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
+
+    //win modal
+    const modal = document.querySelector('.modal');
+    const replay = document.querySelector('.replay');
+
+    replay.addEventListener('click', function() {
+        modal.classList.toggle('hidden');
+        player.reset();
+        player.winGame = false;
+        win.requestAnimationFrame(main);
+});
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -55,7 +67,18 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        if (player.winGame === true) {
+            win.cancelAnimationFrame(id);
+            modal.classList.toggle('hidden');
+            // modal.classList.toggle('hide');
+        }
+        else {
+            id = win.requestAnimationFrame(main);
+}
+            
+            
+        
+        
     }
 
     /* This function does some initial setup that should only occur once,

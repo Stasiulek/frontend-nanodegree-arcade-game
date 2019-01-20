@@ -47,21 +47,22 @@ class PlayerOne  {
         this.x = 200;
         this.y = 400;
         this.sprite = 'images/char-boy.png';
+        this.winGame = false;
     }
     
     update() {        
         //check for win
         if(this.y === -15) {
             setTimeout(function () {
-                player.x = 200;
-                player.y = 400;
+                player.winGame = true;
+                // player.x = 200;
+                // player.y = 400;
+                
              
-            }, 600);
+            }, 200);
         }
     }
 
-
-    
 
     render () {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -86,16 +87,16 @@ class PlayerOne  {
     }
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
+
+//instantiate allEnemies object
 const enemy1 = new Enemy(0, 68, 100);
 const enemy2 = new Enemy(0, 151, 200);
 const enemy3 = new Enemy(0, 234, 300);
 const allEnemies = [];
 allEnemies.push(enemy1, enemy2, enemy3);
-
+//instantiate player object
 const player = new PlayerOne();
-// Place the player object in a variable called player @@ DONE @@
+
 
 
 
